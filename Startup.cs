@@ -31,7 +31,6 @@ namespace Hotsite
                 var connUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
 
                 connUrl = connUrl.Replace("postgres://", string.Empty);
-
                 var pgUserPass = connUrl.Split("@")[0];
                 var pgHostPortDb = connUrl.Split("@")[1];
                 var pgHostPort = pgHostPortDb.Split("/")[0];
@@ -42,7 +41,7 @@ namespace Hotsite
                 var pgHost = pgHostPort.Split(":")[0];
                 var pgPort = pgHostPort.Split(":")[1];
 
-                string connStr = "Server={pgHost};Port={pgPort};User Id={pgUser};Password={pgPass};Database={pgDb};sslmode=Prefer;Trust Server Certificate=true";
+                var connStr = "Server={pgHost};Port={pgPort};User Id={pgUser};Password={pgPass};Database={pgDb};sslmode=Prefer;Trust Server Certificate=true";
 
                 options.UseNpgsql(connStr);
             });

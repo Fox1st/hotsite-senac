@@ -10,12 +10,12 @@ namespace Hotsite.Models
     {
         public int CadastraInteresse(Interesse cad)
         {
-            using (var context = new DatabaseContext())
+            using (DatabaseContext _context = null)
             {
                 try
                 {
-                    context.Add(cad);
-                    context.SaveChanges();
+                    _context.Add(cad);
+                    _context.SaveChanges();
                     return cad.Id;
                 }
                 catch

@@ -27,10 +27,6 @@ C:\Users\yanna\Documents\Senac\C#\Atividade 1 UC06\projetohotsite\bin\Debug\netc
 C:\Users\yanna\Documents\Senac\C#\Atividade 1 UC06\projetohotsite\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.Abstractions.dll
 C:\Users\yanna\Documents\Senac\C#\Atividade 1 UC06\projetohotsite\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Options.dll
 C:\Users\yanna\Documents\Senac\C#\Atividade 1 UC06\projetohotsite\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
-C:\Users\yanna\Documents\Senac\C#\Atividade 1 UC06\projetohotsite\bin\Debug\netcoreapp3.1\MySqlConnector.dll
-C:\Users\yanna\Documents\Senac\C#\Atividade 1 UC06\projetohotsite\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
-C:\Users\yanna\Documents\Senac\C#\Atividade 1 UC06\projetohotsite\bin\Debug\netcoreapp3.1\Pomelo.EntityFrameworkCore.MySql.dll
-C:\Users\yanna\Documents\Senac\C#\Atividade 1 UC06\projetohotsite\bin\Debug\netcoreapp3.1\Pomelo.JsonObject.dll
 C:\Users\yanna\Documents\Senac\C#\Atividade 1 UC06\projetohotsite\obj\Debug\netcoreapp3.1\Hotsite.csproj.AssemblyReference.cache
 C:\Users\yanna\Documents\Senac\C#\Atividade 1 UC06\projetohotsite\obj\Debug\netcoreapp3.1\Hotsite.AssemblyInfoInputs.cache
 C:\Users\yanna\Documents\Senac\C#\Atividade 1 UC06\projetohotsite\obj\Debug\netcoreapp3.1\Hotsite.AssemblyInfo.cs
@@ -69,3 +65,5 @@ C:\Users\yanna\Documents\Senac\C#\Atividade 1 UC06\projetohotsite\bin\Debug\netc
 C:\Users\yanna\Documents\Senac\C#\Atividade 1 UC06\projetohotsite\bin\Debug\netcoreapp3.1\Serilog.Sinks.Async.dll
 C:\Users\yanna\Documents\Senac\C#\Atividade 1 UC06\projetohotsite\bin\Debug\netcoreapp3.1\Serilog.Sinks.File.dll
 C:\Users\yanna\Documents\Senac\C#\Atividade 1 UC06\projetohotsite\bin\Debug\netcoreapp3.1\Serilog.Sinks.RollingFile.dll
+C:\Users\yanna\Documents\Senac\C#\Atividade 1 UC06\projetohotsite\bin\Debug\netcoreapp3.1\Npgsql.dll
+C:\Users\yanna\Documents\Senac\C#\Atividade 1 UC06\projetohotsite\bin\Debug\netcoreapp3.1\Npgsql.EntityFrameworkCore.PostgreSQL.dll
