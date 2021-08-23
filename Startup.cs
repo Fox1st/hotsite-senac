@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Npgsql;
 
 namespace Hotsite
 {
@@ -28,22 +29,22 @@ namespace Hotsite
             services.AddControllersWithViews();
             services.AddEntityFrameworkNpgsql().AddDbContext<DatabaseContext>(options =>
             {
-                var connUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
+                var databaseUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
+                var databaseUri = new Uri(databaseUrl);
+                var userInfo = databaseUri.UserInfo.Split(':');
 
-                connUrl = connUrl.Replace("postgres://", string.Empty);
-                var pgUserPass = connUrl.Split("@")[0];
-                var pgHostPortDb = connUrl.Split("@")[1];
-                var pgHostPort = pgHostPortDb.Split("/")[0];
+                var builder = new NpgsqlConnectionStringBuilder
+                {
+                    Host = databaseUri.Host,
+                    Port = databaseUri.Port,
+                    Username = userInfo[0],
+                    Password = userInfo[1],
+                    Database = databaseUri.LocalPath.TrimStart('/')
+                };
 
-                var pgDb = pgHostPortDb.Split("/")[1];
-                var pgUser = pgUserPass.Split(":")[0];
-                var pgPass = pgUserPass.Split(":")[1];
-                var pgHost = pgHostPort.Split(":")[0];
-                var pgPort = pgHostPort.Split(":")[1];
+                string connStr = builder.ToString();
 
-                var connStr = "Server={pgHost};Port={pgPort};User Id={pgUser};Password={pgPass};Database={pgDb};sslmode=Prefer;Trust Server Certificate=true";
-
-                options.UseNpgsql(connStr);
+                options.UseNpgsql(connStr+";sslmode=Prefer;Trust Server Certificate=true");
             });
         }
 
