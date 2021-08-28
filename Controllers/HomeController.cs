@@ -12,10 +12,12 @@ namespace Hotsite.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly DatabaseContext _context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, DatabaseContext context)
         {
             _logger = logger;
+            _context = context;
         }
 
         public IActionResult Index()
@@ -26,10 +28,10 @@ namespace Hotsite.Controllers
         [HttpPost]
         public IActionResult Cadastrar(Interesse cad)
         {
-            DatabaseService dbs = new DatabaseService();
             try
             {
-                dbs.CadastraInteresse(cad);
+                _context.Add(cad);
+                _context.SaveChanges();
                 return View("Index", cad);
             }
             catch
