@@ -27,24 +27,23 @@ namespace Hotsite
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddEntityFrameworkNpgsql().AddDbContext<DatabaseContext>(options =>
+            services.AddDbContext<DatabaseContext>(options =>
             {
-                var databaseUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
-                var databaseUri = new Uri(databaseUrl);
-                var userInfo = databaseUri.UserInfo.Split(':');
+                string _connectionString = Environment.GetEnvironmentVariable("DATABASE_URL");
+                _connectionString.Replace("//", "");
 
-                var builder = new NpgsqlConnectionStringBuilder
-                {
-                    Host = databaseUri.Host,
-                    Port = databaseUri.Port,
-                    Username = userInfo[0],
-                    Password = userInfo[1],
-                    Database = databaseUri.LocalPath.TrimStart('/')
-                };
+                char[] delimiterChars = { '/', ':', '@', '?' };
+                string[] strConn = _connectionString.Split(delimiterChars);
+                strConn = strConn.Where(x => !string.IsNullOrEmpty(x)).ToArray();
 
-                string connStr = builder.ToString();
+                var user = strConn[1];
+                var pass = strConn[2];
+                var server = strConn[3];
+                var database = strConn[5];
+                var port = strConn[4];
+                string ConnectionString = "host=" + server + ";port=" + port + ";database=" + database + ";uid=" + user + ";pwd=" + pass + ";sslmode=Require;Trust Server Certificate=true;Timeout=1000";
 
-                options.UseNpgsql(connStr+";sslmode=Prefer;Trust Server Certificate=true");
+                options.UseNpgsql(ConnectionString);
             });
         }
 
